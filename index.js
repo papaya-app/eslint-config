@@ -1,6 +1,5 @@
 module.exports = {
   plugins: ['@stylistic'],
-  extends: ['plugin:vue/vue3-recommended'],
   rules: {
     //eslint-recommended"
     'constructor-super': 'off',
@@ -98,7 +97,11 @@ module.exports = {
   overrides: [
     {
       files: ['*.ts', '*.vue'],
-      parser: '@typescript-eslint/parser',
+      parser: 'vue-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        sourceType: 'module'
+      },
       plugins: ['@typescript-eslint', '@stylistic/ts'],
       rules: {
         //@typescript-eslint/recommended"
@@ -157,7 +160,64 @@ module.exports = {
       }
     },
     {
-      files: ["*.vue"],
+      files: ['*.vue'],
+      extends: ['plugin:vue/vue3-recommended'],
+      rules: {
+        'vue/multi-word-component-names': 'off',
+        'vue/html-quotes': ['error', 'single', { avoidEscape: true }],
+        'vue/component-name-in-template-casing': ['error', 'kebab-case'],
+        'vue/attributes-order': [
+          'error',
+          {
+            order: [
+              'DEFINITION',
+              'LIST_RENDERING',
+              'CONDITIONALS',
+              'RENDER_MODIFIERS',
+              'GLOBAL',
+              ['UNIQUE', 'SLOT'],
+              'TWO_WAY_BINDING',
+              'OTHER_DIRECTIVES',
+              'OTHER_ATTR',
+              'EVENTS',
+              'CONTENT'
+            ],
+            alphabetical: true
+          }
+        ]
+      }
+    },
+    {
+      files: ['*.ts', '*.vue'],
+      extends: ['plugin:import/recommended', 'plugin:import/typescript'],
+      settings: {
+        'import/parsers': {
+          '@typescript-eslint/parser': ['.ts', '.vue']
+        },
+      },
+      rules: {
+        'import/order': [
+          'error',
+          {
+            groups: [
+              'builtin',
+              'external',
+              ['internal', 'parent', 'sibling', 'index', 'object', 'type'],
+              'unknown'
+            ],
+            pathGroupsExcludedImportTypes: ['builtin'],
+            'newlines-between': 'always',
+            alphabetize: {
+              order: 'asc',
+              caseInsensitive: true
+            }
+          }
+        ],
+        'import/no-named-as-default-member': 'off',
+        'import/no-named-as-default': 'off',
+        'import/default': 'off',
+        'import/namespace': 'off'
+      }
     }
   ]
 }
