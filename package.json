@@ -1,13 +1,9 @@
 {
   "name": "@papaya/eslint-config",
-  "version": "0.1.7",
+  "version": "0.1.0",
   "main": "index.js",
   "type": "commonjs",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/spectrenas/eslint-config.git"
-  },
   "files": [
     "./index.js",
     "./package.json"
