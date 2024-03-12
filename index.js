@@ -1,7 +1,18 @@
+const stylistic = require('@stylistic/eslint-plugin')
+
+const customized = stylistic.configs.customize({})
+
 module.exports = {
-  plugins: ['@stylistic'],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: [
+    '@stylistic',
+  ],
   rules: {
-    //eslint-recommended"
+    ...customized.rules,
+    // eslint-recommended"
     'constructor-super': 'off',
     'getter-return': 'off',
     'no-const-assign': 'off',
@@ -24,87 +35,81 @@ module.exports = {
     'prefer-spread': 'error',
     'valid-typeof': 'off', // ts(2367)
 
-    //禁止使用undefined初始化值
+    // 禁止使用undefined初始化值
     'no-undef-init': 'error',
 
-    //未使用的变量
+    // 未使用的变量
     'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
 
-    //换行
+    // 换行
     '@stylistic/linebreak-style': ['error', 'unix'],
 
-    //使用单引号
+    // 使用单引号
     '@stylistic/quotes': ['error', 'single'],
 
-    //属性引号在需求的情况下才会出现
+    // 属性引号在需求的情况下才会出现
     '@stylistic/quote-props': ['error', 'as-needed'],
 
-    //jsx使用单引号
+    // jsx使用单引号
     '@stylistic/jsx-quotes': ['error', 'prefer-single'],
 
-    //不使用分号
+    // 不使用分号
     '@stylistic/semi': ['error', 'never'],
 
-    //数组括号一致性
+    // 数组括号一致性
     '@stylistic/array-bracket-newline': ['error', 'consistent'],
 
-    //数组元素一致性
+    // 数组元素一致性
     '@stylistic/array-element-newline': ['error', 'consistent'],
 
-    //类成员间距
+    // 类成员间距
     '@stylistic/lines-between-class-members': ['error', 'always'],
 
-    //注释规范
+    // 注释规范
     '@stylistic/lines-around-comment': ['error', { beforeBlockComment: true }],
 
-    //允许最大的空行
+    // 允许最大的空行
     '@stylistic/no-multiple-empty-lines': ['error', { max: 1 }],
 
-    //不允许多个空格
+    // 不允许多个空格
     '@stylistic/no-multi-spaces': 'error',
 
-    //缩进
+    // 缩进
     '@stylistic/indent': ['error', 2, { SwitchCase: 1 }],
 
-    //块内部间距
+    // 块内部间距
     '@stylistic/block-spacing': ['error', 'always'],
 
-    //块前间距
+    // 块前间距
     '@stylistic/space-before-blocks': 'error',
 
-    //箭头函数间隔
+    // 箭头函数间隔
     '@stylistic/arrow-spacing': 'error',
 
-    //逗号间隔
+    // 逗号间隔
     '@stylistic/comma-spacing': ['error', { before: false, after: true }],
 
-    //对象key间隔
+    // 对象key间隔
     '@stylistic/key-spacing': ['error', { afterColon: true }],
 
-    //对象括号间隔
+    // 对象括号间隔
     'object-curly-spacing': ['error', 'always'],
 
-    //关键字间隔
+    // 关键字间隔
     '@stylistic/keyword-spacing': ['error', { after: true }],
 
-    //中缀操作符的间距
+    // 中缀操作符的间距
     '@stylistic/space-infix-ops': 'error',
 
-    //函数参数间距
+    // 函数参数间距
     '@stylistic/space-in-parens': ['error', 'never'],
-
   },
   overrides: [
     {
       files: ['*.ts', '*.vue'],
-      parser: 'vue-eslint-parser',
-      parserOptions: {
-        parser: '@typescript-eslint/parser',
-        sourceType: 'module'
-      },
       plugins: ['@typescript-eslint', '@stylistic/ts'],
       rules: {
-        //@typescript-eslint/recommended"
+        // @typescript-eslint/recommended"
         '@typescript-eslint/adjacent-overload-signatures': 'error',
         '@typescript-eslint/ban-ts-comment': 'error',
         '@typescript-eslint/ban-types': 'error',
@@ -133,31 +138,31 @@ module.exports = {
         '@typescript-eslint/prefer-namespace-keyword': 'error',
         '@typescript-eslint/triple-slash-reference': 'error',
 
-        //类型标注间隔
+        // 类型标注间隔
         '@stylistic/ts/type-annotation-spacing': [
           'error',
           {
             before: false,
             after: true,
-            overrides: { arrow: { before: true, after: true } }
-          }
+            overrides: { arrow: { before: true, after: true } },
+          },
         ],
 
-        //接口声明分隔符
+        // 接口声明分隔符
         '@stylistic/ts/member-delimiter-style': [
           'error',
           {
             multiline: {
               delimiter: 'none',
-              requireLast: true
+              requireLast: true,
             },
             singleline: {
               delimiter: 'comma',
-              requireLast: true
-            }
-          }
-        ]
-      }
+              requireLast: true,
+            },
+          },
+        ],
+      },
     },
     {
       files: ['*.vue'],
@@ -180,19 +185,19 @@ module.exports = {
               'OTHER_DIRECTIVES',
               'OTHER_ATTR',
               'EVENTS',
-              'CONTENT'
+              'CONTENT',
             ],
-            alphabetical: true
-          }
-        ]
-      }
+            alphabetical: true,
+          },
+        ],
+      },
     },
     {
       files: ['*.ts', '*.vue'],
       extends: ['plugin:import/recommended', 'plugin:import/typescript'],
       settings: {
         'import/parsers': {
-          '@typescript-eslint/parser': ['.ts', '.vue']
+          '@typescript-eslint/parser': ['.ts', '.vue'],
         },
       },
       rules: {
@@ -203,21 +208,21 @@ module.exports = {
               'builtin',
               'external',
               ['internal', 'parent', 'sibling', 'index', 'object', 'type'],
-              'unknown'
+              'unknown',
             ],
             pathGroupsExcludedImportTypes: ['builtin'],
             'newlines-between': 'always',
             alphabetize: {
               order: 'asc',
-              caseInsensitive: true
-            }
-          }
+              caseInsensitive: true,
+            },
+          },
         ],
         'import/no-named-as-default-member': 'off',
         'import/no-named-as-default': 'off',
         'import/default': 'off',
-        'import/namespace': 'off'
-      }
-    }
-  ]
+        'import/namespace': 'off',
+      },
+    },
+  ],
 }
