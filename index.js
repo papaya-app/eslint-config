@@ -108,6 +108,12 @@ module.exports = {
     {
       files: ['*.ts', '*.vue'],
       plugins: ['@typescript-eslint', '@stylistic/ts'],
+      parser: 'vue-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        ecmaVersion: 2020,
+        sourceType: 'module',
+      },
       rules: {
         // @typescript-eslint/recommended"
         '@typescript-eslint/adjacent-overload-signatures': 'error',
@@ -167,6 +173,12 @@ module.exports = {
     {
       files: ['*.vue'],
       extends: ['plugin:vue/vue3-recommended'],
+      parser: 'vue-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        ecmaVersion: 2020,
+        sourceType: 'module',
+      },
       rules: {
         'vue/multi-word-component-names': 'off',
         'vue/html-quotes': ['error', 'single', { avoidEscape: true }],
@@ -195,6 +207,12 @@ module.exports = {
     {
       files: ['*.ts', '*.vue'],
       extends: ['plugin:import/recommended', 'plugin:import/typescript'],
+      parser: 'vue-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        ecmaVersion: 2020,
+        sourceType: 'module',
+      },
       settings: {
         'import/parsers': {
           '@typescript-eslint/parser': ['.ts', '.vue'],
