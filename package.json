@@ -1,6 +1,6 @@
 {
   "name": "@papaya-app/eslint-config",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "index.js",
   "type": "commonjs",
   "license": "MIT",
@@ -9,9 +9,7 @@
     "./package.json"
   ],
   "dependencies": {
-    "@stylistic/eslint-plugin": "^1.6.3"
-  },
-  "devDependencies": {
+    "@stylistic/eslint-plugin": "^1.6.3",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
     "vue-eslint-parser": "^9.4.2",
