@@ -155,11 +155,11 @@ module.exports = {
         ],
 
         // 接口声明分隔符
-        '@stylistic/ts/member-delimiter-style': [
+        '@stylistic/member-delimiter-style': [
           'error',
           {
             multiline: {
-              delimiter: 'none',
+              delimiter: 'comma',
               requireLast: true,
             },
             singleline: {
