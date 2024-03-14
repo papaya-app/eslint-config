@@ -213,11 +213,6 @@ module.exports = {
         ecmaVersion: 2020,
         sourceType: 'module',
       },
-      settings: {
-        'import/parsers': {
-          '@typescript-eslint/parser': ['.ts', '.vue'],
-        },
-      },
       rules: {
         'import/order': [
           'error',
