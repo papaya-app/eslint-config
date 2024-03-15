@@ -1,12 +1,12 @@
 {
   "name": "@papaya-app/eslint-config",
   "version": "0.2.5",
-  "main": "index.js",
   "type": "commonjs",
   "license": "MIT",
   "files": [
-    "./index.js",
-    "./package.json"
+    "rules",
+    "ts.js",
+    "vue-ts.js"
   ],
   "dependencies": {
     "@stylistic/eslint-plugin": "^1.6.3",
